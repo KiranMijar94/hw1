@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS studios;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS characters;
-DROP TABLE IF  EXISTS movie_cast;
+DROP TABLE IF  EXISTS movie_members;
 
 
 CREATE TABLE movies (
@@ -162,8 +162,31 @@ CREATE TABLE characters (
     actor_id INTEGER
 );
 
-CREATE TABLE movie_cast (
+CREATE TABLE movie_members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     movie_id INTEGER
     actor_id INTEGER
-); 
+);
+
+INSERT INTO movies VALUES (
+    1,
+    "Batman Begins",
+    "2005",
+    "PG-13"
+),(
+    2,
+    "The Dark Knight",
+    "2008",
+    "PG-13"
+),(
+    3,
+    "The Dark Knight Rises",
+    "2012",
+    "PG-13"
+);
+
+INSERT INTO studios VALUES (
+    1,
+    "Warner Bros."
+);
+
