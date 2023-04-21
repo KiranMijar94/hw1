@@ -166,4 +166,4 @@ CREATE TABLE movie_cast (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     movie_id INTEGER
     actor_id INTEGER
-);
+); 
