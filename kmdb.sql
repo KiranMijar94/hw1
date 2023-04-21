@@ -118,7 +118,7 @@ CREATE TABLE movies (
     name TEXT,
     year TEXT,
     MPAA TEXT,
-    studios_id INTEGER
+    studio_id INTEGER
 );
 
 CREATE TABLE studios (
@@ -135,8 +135,8 @@ CREATE TABLE actors (
 
 CREATE TABLE movie_members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movies_id INTEGER,
-    actors_id INTEGER
+    movie_id INTEGER,
+    actor_id INTEGER
 );
 
 -- Insert data into your database that reflects the sample data shown above
@@ -146,20 +146,24 @@ CREATE TABLE movie_members (
 INSERT INTO movies (
     name,
     year,
-    MPAA
+    MPAA,
+    studio_id
 )
 VALUES (
     "Batman Begins",
     "2005",
-    "PG-13"
+    "PG-13",
+    1
 ),(
     "The Dark Knight",
     "2008",
-    "PG-13"
+    "PG-13",
+    1
 ),(
     "The Dark Knight Rises",
     "2012",
-    "PG-13"
+    "PG-13",
+    1
 );
 
 INSERT INTO studios (
@@ -208,6 +212,57 @@ VALUES (
     "Selina Kyle"
 );
 
+INSERT INTO movie_members (
+    movie_id,
+    actor_id
+)
+VALUES (
+    1,
+    1
+), (
+    1,
+    2
+), (
+    1,
+    3
+), (
+    1,
+    4
+), (
+    1,
+    5
+), (
+    2,
+    1
+), (
+    2,
+    6
+), (
+    2,
+    7
+), (
+    2,
+    2
+), (
+    2,
+    8
+), (
+    3,
+    1
+), (
+    3,
+    5
+), (
+    3,
+    9
+), (
+    3,
+    10
+), (
+    3,
+    11
+);
+
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -216,7 +271,7 @@ VALUES (
 
 -- The SQL statement for the movies output
 -- TODO!
-SELECT * FROM movies INNER JOIN studios
+SELECT m.name, m.year, m.MPAA, s.name FROM movies AS m INNER JOIN studios AS s ON m.studio_id = s.id
 ;
 
 -- Prints a header for the cast output
@@ -228,6 +283,10 @@ SELECT * FROM movies INNER JOIN studios
 
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT m.name, a.name , a.character FROM 
+movies AS m INNER JOIN movie_members AS o ON o.movie_id = m.id 
+INNER JOIN actors AS a ON o.actor_id = a.id;
 
 
 
