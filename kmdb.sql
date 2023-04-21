@@ -131,24 +131,19 @@
 -- The SQL statement for the cast output
 -- TODO!
 
-DROP TABLE IF EXISTS guests;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS studios;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS characters;
+DROP TABLE IF  EXISTS movie_cast;
 
-CREATE TABLE guests (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT,
-    email TEXT
-);
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    year,
-    MPAA
+    year TEXT,
+    MPAA TEXT
+    studio_id INTEGER
 );
 
 CREATE TABLE studios (
@@ -163,5 +158,12 @@ CREATE TABLE actors (
 
 CREATE TABLE characters (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT
+    name TEXT,
+    actor_id INTEGER
+);
+
+CREATE TABLE movie_cast (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER
+    actor_id INTEGER
 );
