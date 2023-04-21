@@ -118,7 +118,7 @@ CREATE TABLE movies (
     name TEXT,
     year TEXT,
     MPAA TEXT,
-    studio_id INTEGER
+    studios_id INTEGER
 );
 
 CREATE TABLE studios (
@@ -135,8 +135,8 @@ CREATE TABLE actors (
 
 CREATE TABLE movie_members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movie_id INTEGER,
-    actor_id INTEGER
+    movies_id INTEGER,
+    actors_id INTEGER
 );
 
 -- Insert data into your database that reflects the sample data shown above
@@ -208,14 +208,6 @@ VALUES (
     "Selina Kyle"
 );
 
-INSERT INTO movie_members (
-    movie_id,
-    actor_id
-)
-VALUES (
-    1,
-    1
-);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -224,6 +216,8 @@ VALUES (
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT * FROM movies INNER JOIN studios
+;
 
 -- Prints a header for the cast output
 .print ""
@@ -234,8 +228,6 @@ VALUES (
 
 -- The SQL statement for the cast output
 -- TODO!
-
-
 
 
 
